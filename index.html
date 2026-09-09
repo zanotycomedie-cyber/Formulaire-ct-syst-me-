@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Formulaire — CT SYSTÈME</title>
+<style>
+  :root {
+    --vert: #1E8A5F;
+    --vert-fonce: #0F5C3F;
+    --or: #C9A227;
+    --noir: #111111;
+  }
+  * { box-sizing: border-box; }
+  body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: #f4f6f5;
+    margin: 0;
+    padding: 20px;
+    color: var(--noir);
+  }
+  .card {
+    max-width: 560px;
+    margin: 0 auto;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    overflow: hidden;
+  }
+  .header {
+    background: linear-gradient(135deg, var(--vert-fonce), var(--vert));
+    color: #fff;
+    padding: 24px;
+    text-align: center;
+  }
+  .header h1 { margin: 0 0 6px; font-size: 19px; }
+  .header p { margin: 0; font-size: 13px; opacity: 0.92; line-height: 1.5; }
+  .body { padding: 24px; }
+  .section-title {
+    color: var(--vert-fonce);
+    font-size: 15px;
+    font-weight: 700;
+    margin: 28px 0 14px;
+    padding-bottom: 6px;
+    border-bottom: 2px solid var(--or);
+  }
+  .section-title:first-of-type { margin-top: 0; }
+  fieldset { border: none; padding: 0; margin: 0 0 18px; }
+  legend { font-weight: 600; margin-bottom: 6px; font-size: 14px; }
+  .req::after { content: " *"; color: #d33; }
+  input[type="text"], input[type="tel"], input[type="number"],
+  select, textarea {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 14px;
+  }
+  label.option {
+    display: block;
+    padding: 9px 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin-bottom: 7px;
+    cursor: pointer;
+    font-size: 14px;
+  }
+  label.option:hover { border-color: var(--vert); }
+  .conditional { display: none; margin-top: 8px; }
+  button {
+    width: 100%;
+    padding: 14px;
+    background: var(--vert-fonce);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+  .footer-note { text-align: center; font-size: 12px; color: #888; margin-top: 16px; }
+</style>
+</head>
+<body>
+
+<div class="card">
+  <div class="header">
+    <h1>Formulaire CT SYSTÈME</h1>
+    <p>Remplis ce formulaire avec honnêteté. Plus tes réponses sont précises, plus nous pourrons te proposer un planning adapté et des conseils utiles.</p>
+  </div>
+
+  <div class="body">
+    <form id="intakeForm">
+
+      <div class="section-title">1. Informations personnelles</div>
+
+      <fieldset>
+        <legend class="req">Nom et Prénom</legend>
+        <input type="text" name="nom_prenom" required>
+      </fieldset>
+
+      <fieldset>
+        <legend class="req">Âge</legend>
+        <input type="number" name="age" min="5" max="30" required>
+      </fieldset>
+
+      <fieldset>
+        <legend class="req">Ville / Quartier</legend>
+        <input type="text" name="ville_quartier" required>
+      </fieldset>
+
+      <fieldset>
+        <legend class="req">Numéro WhatsApp</legend>
+        <input type="tel" name="whatsapp" placeholder="+237 6XX XXX XXX" required>
+      </fieldset>
+
+      <div class="section-title">2. Situation scolaire actuelle</div>
+
+      <fieldset>
+        <legend class="req">Es-tu encore à l'école ?</legend>
+        <select name="encore_ecole" id="encoreEcole" required>
+          <option value="">-- Choisis --</option>
+          <option value="oui">Oui</option>
+          <option value="non">Non</option>
+        </select>
+      </fieldset>
+
+      <fieldset class="conditional" id="classeBlock">
+        <legend>Si oui, quelle classe ?</legend>
+        <select name="classe">
+          <option value="">-- Choisis --</option>
+          <option value="6e">6e</option>
+          <option value="5e">5e</option>
+          <option value="4e">4e</option>
+          <option value="3e">3e</option>
+          <option value="2nde">2nde</option>
+          <option value="1ere">1ère</option>
+          <option value="terminale">Terminale</option>
+        </select>
+      </fieldset>
+
+      <fieldset class="conditional" id="arretBlock">
+        <legend>Si non, depuis quand as-tu arrêté ?</legend>
+        <input type="text" name="depuis_quand_arret" placeholder="Ex: depuis 2 ans, en 2023...">
+      </fieldset>
+
+      <fieldset>
+        <legend>As-tu déjà redoublé ou connu des échecs scolaires ? Explique brièvement</legend>
+        <textarea name="redoublement_echecs" rows="2"></textarea>
+      </fieldset>
+
+      <div class="section-title">3. Objectif principal</div>
+
+      <fieldset>
+        <legend class="req">Que souhaites-tu vraiment atteindre en ce moment ?</legend>
+        <select name="objectif_principal" id="objectifSelect" required>
+          <option value="">-- Choisis --</option>
+          <option value="reprendre_etudes">Reprendre les études</option>
+          <option value="ameliorer_notes">Améliorer mes notes</option>
+          <option value="reussir_bepc_bac">Réussir le BEPC/BAC</option>
+          <option value="preparer_concours">Me préparer à un concours</option>
+          <option value="autre">Autre</option>
+        </select>
+        <div class="conditional" id="objectifAutreBlock">
+          <input type="text" name="objectif_autre_precision" placeholder="Précise ton objectif">
+        </div>
+      </fieldset>
+
+      <div class="section-title">4. Passion et projet de vie</div>
+
+      <fieldset>
+        <legend class="req">Quelle est ta passion ?</legend>
+        <input type="text" name="passion" required>
+      </fieldset>
+
+      <fieldset>
+        <legend class="req">Qu'est-ce que tu aimerais faire plus tard dans la vie ?</legend>
+        <input type="text" name="projet_vie" required>
+      </fieldset>
+
+      <fieldset>
+        <legend class="req">Pourquoi est-ce important pour toi ?</legend>
+        <textarea name="pourquoi_important" rows="2" required></textarea>
+      </fieldset>
+
+      <div class="section-title">5. Difficultés actuelles</div>
+
+      <fieldset>
+        <legend class="req">Qu'est-ce qui te bloque le plus aujourd'hui ?</legend>
+        <label class="option"><input type="checkbox" name="blocages" value="manque_concentration"> Manque de concentration</label>
+        <label class="option"><input type="checkbox" name="blocages" value="manque_methode"> Manque de méthode</label>
+        <label class="option"><input type="checkbox" name="blocages" value="stress"> Stress</label>
+        <label class="option"><input type="checkbox" name="blocages" value="manque_motivation"> Manque de motivation</label>
+        <label class="option"><input type="checkbox" name="blocages" value="problemes_familiaux"> Problèmes familiaux</label>
+        <label class="option"><input type="checkbox" name="blocages" value="manque_moyens"> Manque de moyens</label>
+        <label class="option"><input type="checkbox" name="blocages" value="autre" id="blocageAutreCheck"> Autre</label>
+        <div class="conditional" id="blocageAutreBlock">
+          <input type="text" name="blocage_autre_precision" placeholder="Précise">
+        </div>
+      </fieldset>
+
+      <div class="section-title">6. Type d'aide souhaitée</div>
+
+      <fieldset>
+        <legend class="req">Coche ce dont tu as le plus besoin</legend>
+        <label class="option"><input type="checkbox" name="aide_souhaitee" value="planning_personnalise"> Un planning scolaire personnalisé</label>
+        <label class="option"><input type="checkbox" name="aide_souhaitee" value="suivi_regulier"> Un suivi régulier</label>
+        <label class="option"><input type="checkbox" name="aide_souhaitee" value="techniques_concentration"> Des techniques de concentration</label>
+        <label class="option"><input type="checkbox" name="aide_souhaitee" value="methodes_revision"> Des méthodes de révision</label>
+        <label class="option"><input type="checkbox" name="aide_souhaitee" value="conseils_reprise"> Des conseils pour reprendre les études</label>
+        <label class="option"><input type="checkbox" name="aide_souhaitee" value="autre" id="aideAutreCheck"> Autre</label>
+        <div class="conditional" id="aideAutreBlock">
+          <input type="text" name="aide_autre_precision" placeholder="Précise">
+        </div>
+      </fieldset>
+
+      <div class="section-title">7. Disponibilité</div>
+
+      <fieldset>
+        <legend class="req">Combien de temps par jour peux-tu réellement consacrer à tes études ou à ton projet ?</legend>
+        <select name="disponibilite" required>
+          <option value="">-- Choisis --</option>
+          <option value="moins_1h">Moins d'1h par jour</option>
+          <option value="1h_2h">1h à 2h par jour</option>
+          <option value="2h_4h">2h à 4h par jour</option>
+          <option value="plus_4h">Plus de 4h par jour</option>
+        </select>
+      </fieldset>
+
+      <div class="section-title">8. Message libre</div>
+
+      <fieldset>
+        <legend>Y a-t-il autre chose d'important que tu veux nous dire ?</legend>
+        <textarea name="message_libre" rows="3"></textarea>
+      </fieldset>
+
+      <button type="submit">Envoyer mon formulaire</button>
+    </form>
+    <div class="footer-note">CT SYSTÈME — Le Système des Leaders Africains</div>
+  </div>
+</div>
+
+<script>
+  const encoreEcole = document.getElementById('encoreEcole');
+  const classeBlock = document.getElementById('classeBlock');
+  const arretBlock = document.getElementById('arretBlock');
+
+  encoreEcole.addEventListener('change', function() {
+    classeBlock.style.display = (this.value === 'oui') ? 'block' : 'none';
+    arretBlock.style.display = (this.value === 'non') ? 'block' : 'none';
+  });
+
+  document.getElementById('objectifSelect').addEventListener('change', function() {
+    document.getElementById('objectifAutreBlock').style.display = (this.value === 'autre') ? 'block' : 'none';
+  });
+
+  document.getElementById('blocageAutreCheck').addEventListener('change', function() {
+    document.getElementById('blocageAutreBlock').style.display = this.checked ? 'block' : 'none';
+  });
+
+  document.getElementById('aideAutreCheck').addEventListener('change', function() {
+    document.getElementById('aideAutreBlock').style.display = this.checked ? 'block' : 'none';
+  });
+
+  document.getElementById('intakeForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const formData = new FormData(this);
+    const data = Object.fromEntries(formData.entries());
+    data.blocages = formData.getAll('blocages');
+    data.aide_souhaitee = formData.getAll('aide_souhaitee');
+
+    const submitBtn = this.querySelector('button[type="submit"]');
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Génération de ton planning en cours...';
+
+    try {
+      // >>> POUR LE DÉVELOPPEUR <<<
+      // Cette URL doit pointer vers une fonction serveur (Netlify Function, Vercel
+      // Function, etc.) qui reçoit ces données, appelle l'API Claude avec le prompt
+      // fourni séparément, et renvoie { planning: "texte du planning généré" }.
+      // L'appel à l'IA ne doit JAMAIS se faire depuis ce fichier HTML directement :
+      // la clé API serait visible par n'importe qui dans le code source de la page.
+      const response = await fetch('/api/generer-planning', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      });
+
+      if (!response.ok) throw new Error('Erreur serveur');
+
+      document.querySelector('.body').innerHTML =
+        '<h2 style="text-align:center; color:#0F5C3F;">Merci ' + (data.nom_prenom || '') + ' ! 🎯</h2>' +
+        '<p style="text-align:center;">Ta réponse a bien été reçue. Ton conseiller prépare ton programme personnalisé et te contactera très vite sur WhatsApp 📚</p>';
+    } catch (err) {
+      console.error(err);
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Réessayer';
+      alert("Une erreur est survenue pendant la génération. Réessaie dans un instant.");
+    }
+  });
+</script>
+
+</body>
+</html>

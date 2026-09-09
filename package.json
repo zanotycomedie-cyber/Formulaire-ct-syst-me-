@@ -1,0 +1,8 @@
+{
+  "name": "formulaire-ct-systeme",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "pdfkit": "^0.14.0"
+  }
+}
